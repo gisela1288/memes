@@ -106,15 +106,15 @@ blendMode.addEventListener(`input`, () => {
 const filtersContainer = document.getElementById("styles-filters")
 
 const properties = [
-    { name: "brightness"    , default: 1    , min: 0    , max: 10   , step: 0.1 , convertValue: (val) => `${val}`   },
-    { name: "opacity"       , default: 1    , min: 0    , max: 1    , step: 0.1 , convertValue: (val) => `${val}`   },
-    { name: "contrast"      , default: 100  , min: 100  , max: 1000 , step: 1   , convertValue: (val) => `${val}%`  },
-    { name: "blur"          , default: 0    , min: 0    , max: 10   , step: 0.1 , convertValue: (val) => `${val}px` },
-    { name: "grayscale"     , default: 0    , min: 0    , max: 100  , step: 1   , convertValue: (val) => `${val}%`  },
-    { name: "sepia"         , default: 0    , min: 0    , max: 100  , step: 1   , convertValue: (val) => `${val}%`  },
-    { name: "hue-rotate"    , default: 0    , min: 0    , max: 360  , step: 1   , convertValue: (val) => `${val}deg`},
-    { name: "saturate"      , default: 100  , min: 100  , max: 1000 , step: 10  , convertValue: (val) => `${val}%`  },
-    { name: "invert"        , default: 1    , min: 0    , max: 100  , step: 0.1 , convertValue: (val) => `${val}%`  }
+    { name: "Brightness"    , default: 1    , min: 0    , max: 10   , step: 0.1 , convertValue: (val) => `${val}`   },
+    { name: "Opacity"       , default: 1    , min: 0    , max: 1    , step: 0.1 , convertValue: (val) => `${val}`   },
+    { name: "Contrast"      , default: 100  , min: 100  , max: 1000 , step: 1   , convertValue: (val) => `${val}%`  },
+    { name: "Blur"          , default: 0    , min: 0    , max: 10   , step: 0.1 , convertValue: (val) => `${val}px` },
+    { name: "Grayscale"     , default: 0    , min: 0    , max: 100  , step: 1   , convertValue: (val) => `${val}%`  },
+    { name: "Sepia"         , default: 0    , min: 0    , max: 100  , step: 1   , convertValue: (val) => `${val}%`  },
+    { name: "Hue-rotate"    , default: 0    , min: 0    , max: 360  , step: 1   , convertValue: (val) => `${val}deg`},
+    { name: "Saturate"      , default: 100  , min: 100  , max: 1000 , step: 10  , convertValue: (val) => `${val}%`  },
+    { name: "Invert"        , default: 1    , min: 0    , max: 100  , step: 0.1 , convertValue: (val) => `${val}%`  }
 ]
 
 const createSlider = (property) => {
@@ -157,7 +157,8 @@ const resetDefaultValues = () => {
     updateFilter()
 }
 
-document.getElementById("restablecer").addEventListener("click", resetDefaultValues);
+document.getElementById("btnRestablecer").addEventListener("click", resetDefaultValues);
+
 
 //--------BOTÓN DE DESCARGA---------------
 const btnDownload = document.getElementById('btnDownload');

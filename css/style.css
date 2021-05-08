@@ -180,7 +180,7 @@ select:focus {
 #divImg {
 	flex-grow: 1;
 	background-size: 100% 100%;
-	-background-image: url("https://pbs.twimg.com/profile_images/856198010853769217/ctUaRn0I_400x400.jpg");
+	background-image: url("https://pbs.twimg.com/profile_images/856198010853769217/ctUaRn0I_400x400.jpg");
 	background-position: center;
 	background-repeat: no-repeat;
 }
