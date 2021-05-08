@@ -69,15 +69,15 @@ urlImg.addEventListener('input', () => {
 
 //-----------CARGAR IMAGEN----------------------//
 const cargarArchivo = document.getElementById("cargarArchivo");
- cargarArchivo.addEventListener ("input", function(){
-	 const file = this.files[0];
-	 const reader = new FileReader();
-	 reader.addEventListener("load",function(){
-		 divImg.style.backgroundImage = `url(${this.result})`;	  
-	 });
-	 reader.readAsDataURL(file);
+cargarArchivo.addEventListener("input", function () {
+	const file = this.files[0];
+	const reader = new FileReader();
+	reader.addEventListener("load", function () {
+		divImg.style.backgroundImage = `url(${this.result})`;
+	});
+	reader.readAsDataURL(file);
 
- });
+});
 
 //---------------------FONDO COLOR---------------------//
 
@@ -106,55 +106,58 @@ blendMode.addEventListener(`input`, () => {
 const filtersContainer = document.getElementById("styles-filters")
 
 const properties = [
-	{ name: "Brightness", default: 1, min: 0, max: 10, step: 0.1, convertValue: (val) => `${val}` },
-	{ name: "Opacity", default: 1, min: 0, max: 1, step: 0.1, convertValue: (val) => `${val}` },
-	{ name: "Contrast", default: 100, min: 100, max: 1000, step: 1, convertValue: (val) => `${val}%` },
-	{ name: "Blur", default: 0, min: 0, max: 10, step: 0.1, convertValue: (val) => `${val}px` },
-	{ name: "Grayscale", default: 0, min: 0, max: 100, step: 1, convertValue: (val) => `${val}%` },
-	{ name: "Sepia", default: 0, min: 0, max: 100, step: 1, convertValue: (val) => `${val}%` },
-	{ name: "Hue-rotate", default: 0, min: 0, max: 360, step: 1, convertValue: (val) => `${val}deg` },
-	{ name: "Saturate", default: 100, min: 100, max: 1000, step: 10, convertValue: (val) => `${val}%` },
-	{ name: "Invert", default: 1, min: 0, max: 100, step: 0.1, convertValue: (val) => `${val}%` }
+    { name: "brightness"    , default: 1    , min: 0    , max: 10   , step: 0.1 , convertValue: (val) => `${val}`   },
+    { name: "opacity"       , default: 1    , min: 0    , max: 1    , step: 0.1 , convertValue: (val) => `${val}`   },
+    { name: "contrast"      , default: 100  , min: 100  , max: 1000 , step: 1   , convertValue: (val) => `${val}%`  },
+    { name: "blur"          , default: 0    , min: 0    , max: 10   , step: 0.1 , convertValue: (val) => `${val}px` },
+    { name: "grayscale"     , default: 0    , min: 0    , max: 100  , step: 1   , convertValue: (val) => `${val}%`  },
+    { name: "sepia"         , default: 0    , min: 0    , max: 100  , step: 1   , convertValue: (val) => `${val}%`  },
+    { name: "hue-rotate"    , default: 0    , min: 0    , max: 360  , step: 1   , convertValue: (val) => `${val}deg`},
+    { name: "saturate"      , default: 100  , min: 100  , max: 1000 , step: 10  , convertValue: (val) => `${val}%`  },
+    { name: "invert"        , default: 1    , min: 0    , max: 100  , step: 0.1 , convertValue: (val) => `${val}%`  }
 ]
 
 const createSlider = (property) => {
-	const slider = document.createElement("input");
-	slider.type = "range";
-	slider.id = property.name + "-slider";
-	slider.value = property.default;
+    const slider = document.createElement("input");
+    slider.type = "range";
+    slider.id = property.name + "-slider";
+    slider.min = property.min;
+    slider.max = property.max;
+    slider.step = property.step;
+    slider.value = property.default;
 
-	const label = document.createElement("label");
-	label.innerText = property.name;
-	label.htmlFor = slider.id;
-
-	[label, slider].forEach(el => filtersContainer.appendChild(el))
+    const label = document.createElement("label");
+    label.innerText = property.name;
+    label.htmlFor = slider.id;
+    
+    [label, slider].forEach(el => filtersContainer.appendChild(el))
 }
 
 properties.forEach(createSlider)
 
 const propertiesElements = properties.map(property => ({
-	...property,
-	element: document.getElementById(property.name + "-slider")
+    ...property, 
+    element: document.getElementById(property.name + "-slider")
 }))
 console.log(propertiesElements);
 
 const updateFilter = () => {
-	const filter = propertiesElements.map(el => `${el.name}(${el.convertValue(el.element.value)})`).join(" ");
-	divImg.style.filter = filter;
+    const filter = propertiesElements.map(el => `${el.name}(${el.convertValue(el.element.value)})`).join(" ");
+    divImg.style.filter = filter;
 };
 
 propertiesElements.forEach(property => property.element.addEventListener("change", updateFilter));
 
 console.log(propertiesElements);
 
-const resetDefaultValues = () => {
-	propertiesElements.forEach(property => {
-		property.element.value = property.default
-	})
-	updateFilter()
+const resetDefaultValues = () => { 
+    propertiesElements.forEach(property => {
+        property.element.value = property.default 
+    })
+    updateFilter()
 }
 
-document.getElementById("btnRestablecer").addEventListener("click", resetDefaultValues);
+document.getElementById("restablecer").addEventListener("click", resetDefaultValues);
 
 //--------BOTÓN DE DESCARGA---------------
 const btnDownload = document.getElementById('btnDownload');
@@ -310,11 +313,11 @@ fondoTransparente.addEventListener("input", () => {
 
 
 const sinCont = document.getElementById("sinCont");
-const contCLaro =document.getElementById("contClaro");
+const contCLaro = document.getElementById("contClaro");
 const contOscuro = document.getElementById("contOscuro");
 
 const contornoTexto = (contorno) => {
-	topText.style.textShadow= contorno;
+	topText.style.textShadow = contorno;
 	bottomText.style.textShadow = contorno;
 };
 
@@ -350,11 +353,10 @@ interlineado.addEventListener("input", () => {
 });
 
 const ajustarImagen = () => {
-	imgTextContainer.style.height = `${
-	  imgTextContainer.getBoundingClientRect().width
-	}px`
-  }
+	imgTextContainer.style.height = `${imgTextContainer.getBoundingClientRect().width
+		}px`
+}
 
-  window.addEventListener('resize', ajustarImagen);
+window.addEventListener('resize', ajustarImagen);
 
 
