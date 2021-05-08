@@ -16,16 +16,18 @@
   <header class="header">
     <h1 class="header-title">Generador de Memes</h1>
     <div class="img-text-theme-buttons-container">
-      <button class="button" id="buttonImg"><i class="fas fa-font"></i>Texto</button>
-      <button class="button" id="buttonText"><i class="fas fa-images"></i>Imagen</button>
-      <button class="button" id="buttonTheme"><i class="far fa-sun " id="iconTheme"></i></i> <span id="textTheme">Modo
-          Claro</span>
+      <button class="button btnHeader" id="buttonImg"><i class="fas fa-font"></i> <span class="span">Texto
+      </span></button>
+      <button class="button btnHeader" id="buttonText"><i class="fas fa-images"></i> <span class="span">Imagen
+      </span></button>
+      <button class="button btnHeader" id="buttonTheme"><i class="far fa-sun " id="iconTheme"></i><span class="span" id="textTheme">Modo
+        Claro</span></button>
     </div>
   </header>
   <div class="max-container">
     <!-----------------------------------------------MAIN-------------------------------->
     <main class="meme-container">
-      <div class="img-text-container">
+      <div class="img-text-container" id="imgTextContainer">
 
         <p class="top-text" id="topText">TOP TEXT</p>
         <div id="divImg"> </div>
@@ -48,6 +50,8 @@
         <div class="panel-control">
           <h3 class="panel-control-title">URL</h3>
           <input type="text" class="panel-control-input" id="urlImg" />
+          <h3 class="panel-control-title">Cargar Imagen </h3>
+          <input type="file" name="cargar archivo" id="cargarArchivo" class="panel-control-input">
         </div>
 
         <!-------------------------FONDO-------------------------------->
@@ -140,7 +144,7 @@
         <!---------------------COLOR Y FONDO------------------------->
         <div class="panel-control">
           <div class="panel-control-columns">
-            <!-----------------color del texto------------------>
+            <!-----------------COLOR DEL TEXTO------------------>
             <div class="colorFondoTitles">
               <h3 class="panel-control-title">COLOR</h3>
               <h3 class="panel-control-title">FONDO</h3>
@@ -151,25 +155,33 @@
               <input name="Color de texto" type="color" id="colorTexto" value="#000000" aria-label="Color de texto">
               <span id="nombreColorTx" aria-hidden="true">#000000</span>
             </div>
+
+            <!---------------------COLOR DEL FONDO------------------->
             <div class="panel-control-color" id="marginRight">
               <input name="Color de fondo de texto" type="color" id="colorTxFondo" value="#FFFFFF"
                 aria-label="Color de fondo de texto">
               <span id="nombreFondoClTx" aria-hidden="true">#FFFFFF</span>
             </div>
           </div>
+          <!------------------FONDO TRANSPARENTE-------------------->
           <div class="check-area">
             <input type="checkbox" name="fondo Transparente" id="fondoTransparente">
             <label for="">Fondo transparente</label>
           </div>
         </div>
+
+        <!---------------------------------CONTRONO------------------>
         <h4 class="panel-control-title">Contorno</h4>
         <div class="btnsContorno" id="btnContorno">
           <button class="btnContorno" id="sinCont">Ninguno</button>
           <button class="btnContorno" id="contClaro">Claro</button>
           <button class="btnContorno" id="contOscuro">Oscuro</button>
+          <!------------------------------ESPACIADO------------------------>
         </div>
         <h4 class="panel-control-title">Espaciado</h4>
         <input type="number" class="panel-control-input" id="espaciado" value="20" min="10" max="40">
+        
+       <!------------------      -------INTERLINEADO-------------------------> 
         <h4 class="panel-control-title">Interlineado</h4>
         <select class="panel-control-input" name="interlineado" id="interlineado">
           <option value="0.8">0.8</option>
