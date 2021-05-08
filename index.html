@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Document</title>
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.3/css/all.css"
+    integrity="sha384-SZXxX4whJ79/gErwcOYf+zWLeJdY/qpuqC4cAa9rOGUstPomtqpuNWT9wdPEn2fk" crossorigin="anonymous" />
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+</head>
+
+<body class="light-theme">
+  <header class="header">
+    <h1 class="header-title">Generador de Memes</h1>
+    <div class="img-text-theme-buttons-container">
+      <button class="button" id="buttonImg"><i class="fas fa-font"></i>Texto</button>
+      <button class="button" id="buttonText"><i class="fas fa-images"></i>Imagen</button>
+      <button class="button" id="buttonTheme"><i class="far fa-sun " id="iconTheme"></i></i> <span id="textTheme">Modo
+          Claro</span>
+    </div>
+  </header>
+  <div class="max-container">
+    <!-----------------------------------------------MAIN-------------------------------->
+    <main class="meme-container">
+      <div class="img-text-container">
+
+        <p class="top-text" id="topText">TOP TEXT</p>
+        <div id="divImg"> </div>
+        <p class="bottom-text" id="bottomText">BOTTOM TEXT</p>
+
+      </div>
+      <button class="btn-download" id="btnDownload"><i class="fas fa-download"></i> Descargar meme</button>
+    </main>
+
+    <!-----------------------------------------------ASIDE--------------------------------------------->
+
+    <aside class="panel" id="panel">
+      <button class="panel-close" id="button-close">
+        <i class="fas fa-times"></i>
+      </button>
+
+      <!------------------------------------------PANEL IMAGEN--------------------------------------->
+      <section id="panelImg" class="panel-img ">
+        <h2 class="panel-title">Imagen</h2>
+        <div class="panel-control">
+          <h3 class="panel-control-title">URL</h3>
+          <input type="text" class="panel-control-input" id="urlImg" />
+        </div>
+
+        <!-------------------------FONDO-------------------------------->
+        <h3 class="panel-control-title">Fondo</h3>
+        <div class="panel-control-columns">
+          <div class="panel-control-color">
+            <input aria-level="color de fondo" type="color" name="color de fondo" id="inputColor" value="#FFFFFF">
+            <span id="nombreColor"> #FFFFF </span>
+          </div>
+          <div class="selector">
+            <select class="blend-mode-selector" name="selectorFondo" id="blendMode">
+              <option value="unset">Ninguno</option>
+              <option value="lighten">Aclarar</option>
+              <option value="darken">Oscurecer</option>
+              <option value="difference">Diferencia</option>
+              <option value="luminosity">Luminosidad</option>
+              <option value="multiply">Multiplicar</option>
+              <option value="color-dodge">Sobreexponer color</option>
+            </select>
+          </div>
+        </div>
+
+        <!-----------------------FILTROS------------------------>
+
+        <div class="panel-control">
+          <h3 class="panel-control-title">Filtros</h3>
+
+          <div id="styles-filters" class="styles-filters">
+          </div>
+
+          <button class="button btnRestablecer" id="btnRestablecer">Restablecer filtros</button>
+        </div>
+      </section>
+
+      <!----------------------PANEL TEXTO----------------------- -->
+
+      <section id="panelText" class="panel-text ocultar">
+        <h2 class="panel-title">Texto</h2>
+        <!-----------------TEXTO SUPERIOR -------------------------->
+        <div class="panel-control">
+          <h4 class="panel-control-title">Superior</h4>
+          <textarea name="texto superior" class="panel-control-input" id="topTextInput" cols="30" rows="10">TOP TEXT</textarea>
+          <div class="checkbox">
+            <input type="checkbox" name="sin texto superior" id="sinTextoSuperior">
+            <label for="sinTextoInferior">Sin texto Superior</label>
+          </div>
+        </div>
+        <!----------------TEXTO INFERIOR----------------------------->
+        <div class="panel-control">
+          <h4 class="panel-control-title">Inferior</h4>
+          <textarea name="texto inferior" class="panel-control-input" id="bottomTextInput" cols="30" rows="10">BOTTOM TEXT</textarea>
+          <div class="checkbox">
+            <input type="checkbox" name="sin texto inferior" class="sinTextoInferior" id="sinTextoInferior">
+            <label for="sinTextoInferior">Sin texto Inferior</label>
+
+          </div>
+        </div>
+        <!---------------TIPO DE FUENTE------------------->
+
+        <div class="fuente">
+          <h4 class="panel-control-title">Fuente</h4>
+          <select class="panel-control-input" name="" id="tipoFuente">
+            <option value="Impact">Impact</option>
+            <option value="Ubuntu">Ubuntu</option>
+            <option value="Pangolin">Pangolin</option>
+            <option value="Girasol">Girasol</option>
+            <option value="New Tegomin">New Tegomin</option>
+            <option value="Josefin Sans">Josefin Sans</option>
+            <option value="indie Flowe">indie Flower</option>
+            <option value="Hind Guntur">Hind Guntur</option>
+            <option value="Luckiest Guy">Luckiest Guy</option>
+            <option value="Cabin Sketc">Cabin Sketch</option>
+          </select>
+        </div>
+             <!---------------CONTAINER-TAMAÑIO Y ALINEACION------------------------------>
+        <div class="container-tamanio-alineacion">
+
+          <input type="number" class="panel-control-input" name="tamanio de fuente" id="tamanioFuente" min="12" max="40" value="12">
+              <!---------------------ALINEACION DE TEXTO------------------->
+
+          <div class="btnsText">
+
+            <button class="button btnText" id="textLeftAlign" aria-label="alinear texto a la izquierda"><i class="fas fa-align-left"></i></button>
+            <button class="button btnText" id="textCenterAlign" aria-lebel="alinear texto a centro"><i class="fas fa-align-justify"></i></button>
+            <button class="button btnText" id="textRightAlign" aria-lebel="alinear texto a la derecha"><i class="fas fa-align-right"></i></button>
+
+          </div>
+        </div>
+
+        <!---------------------COLOR Y FONDO------------------------->
+        <div class="panel-control">
+          <div class="panel-control-columns">
+            <!-----------------color del texto------------------>
+            <div class="colorFondoTitles">
+              <h3 class="panel-control-title">COLOR</h3>
+              <h3 class="panel-control-title">FONDO</h3>
+            </div>
+          </div>
+          <div class="panel-control-columns">
+            <div class="panel-control-color" id="marginLeft">
+              <input name="Color de texto" type="color" id="colorTexto" value="#000000" aria-label="Color de texto">
+              <span id="nombreColorTx" aria-hidden="true">#000000</span>
+            </div>
+            <div class="panel-control-color" id="marginRight">
+              <input name="Color de fondo de texto" type="color" id="colorTxFondo" value="#FFFFFF"
+                aria-label="Color de fondo de texto">
+              <span id="nombreFondoClTx" aria-hidden="true">#FFFFFF</span>
+            </div>
+          </div>
+          <div class="check-area">
+            <input type="checkbox" name="fondo Transparente" id="fondoTransparente">
+            <label for="">Fondo transparente</label>
+          </div>
+        </div>
+        <h4 class="panel-control-title">Contorno</h4>
+        <div class="btnsContorno" id="btnContorno">
+          <button class="btnContorno" id="sinCont">Ninguno</button>
+          <button class="btnContorno" id="contClaro">Claro</button>
+          <button class="btnContorno" id="contOscuro">Oscuro</button>
+        </div>
+        <h4 class="panel-control-title">Espaciado</h4>
+        <input type="number" class="panel-control-input" id="espaciado" value="20" min="10" max="40">
+        <h4 class="panel-control-title">Interlineado</h4>
+        <select class="panel-control-input" name="interlineado" id="interlineado">
+          <option value="0.8">0.8</option>
+          <option value="1">1</option>
+          <option value="1.2" selected>1.2</option>
+          <option value="1.5">1.5</option>
+          <option value="2">2</option>
+          <option value="2.5">2.5</option>
+        </select>
+
+      </section>
+    </aside>
+  </div>
+  <script src="js/app.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/2.0.0/FileSaver.min.js"
+    integrity="sha512-csNcFYJniKjJxRWRV1R7fvnXrycHP6qDR21mgz1ZP55xY5d+aHLfo9/FcGDQLfn2IfngbAHd8LdfsagcCqgTcQ=="
+    crossorigin="anonymous">
+    </script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/dom-to-image/2.6.0/dom-to-image.min.js"
+    integrity="sha512-01CJ9/g7e8cUmY0DFTMcUw/ikS799FHiOA0eyHsUWfOetgbx/t6oV4otQ5zXKQyIrQGTHSmRVPIgrgLcZi/WMA=="
+    crossorigin="anonymous">
+    </script>
+</body>
+
+</html>
