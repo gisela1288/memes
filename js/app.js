@@ -67,6 +67,18 @@ urlImg.addEventListener('input', () => {
 
 });
 
+//-----------CARGAR IMAGEN----------------------//
+const cargarArchivo = document.getElementById("cargarArchivo");
+ cargarArchivo.addEventListener ("input", function(){
+	 const file = this.files[0];
+	 const reader = new FileReader();
+	 reader.addEventListener("load",function(){
+		 divImg.style.backgroundImage = `url(${this.result})`;	  
+	 });
+	 reader.readAsDataURL(file);
+
+ });
+
 //---------------------FONDO COLOR---------------------//
 
 let inputColor = document.getElementById("inputColor");
@@ -80,7 +92,7 @@ const cambiarColorFondo = () => {
 
 inputColor.addEventListener(`input`, cambiarColorFondo);
 
-//-----------FONDO---------------//
+//-------------------------FONDO---------------//
 
 const blendMode = document.getElementById(`blendMode`);
 
@@ -89,7 +101,7 @@ blendMode.addEventListener(`input`, () => {
 
 });
 
-//-----------FILTROS-----------//
+//-----------------------FILTROS-----------//
 
 const filtersContainer = document.getElementById("styles-filters")
 
@@ -146,10 +158,19 @@ document.getElementById("btnRestablecer").addEventListener("click", resetDefault
 
 //--------BOTÓN DE DESCARGA---------------
 const btnDownload = document.getElementById('btnDownload');
+const imgTextContainer = document.getElementById("imgTextContainer");
 btnDownload.addEventListener('click', () => {
+	const anchoImg = imgTextContainer.offsetWidth;
+	const altoImg = imgTextContainer.offsetWidth;
+	imgTextContainer.style.width = anchoImg * 2 + 'px';
+	imgTextContainer.style.height = altoImg * 2 + 'px';
+
 	domtoimage.toBlob(document.getElementById('divImg'))
 		.then(function (blob) {
 			window.saveAs(blob, 'my-node.png');
+			imgTextContainer.style.width = anchoImg + 'px';
+			imgTextContainer.style.height = altoImg + 'px';
+
 		});
 });
 
@@ -251,7 +272,7 @@ colorTexto.addEventListener("input", () => {
 
 });
 
-//---------------FONDO DEL TEXTO-----------
+//---------------FONDO DEL TEXTO--------------------//
 const colorTxFondo = document.getElementById("colorTxFondo");
 const fondoTransparente = document.getElementById("fondoTransparente");
 const nombreFondoClTx = document.getElementById("nombreFondoClTx");
@@ -263,6 +284,7 @@ colorTxFondo.addEventListener("input", () => {
 	nombreFondoClTx.innerHTML = colorTxFondo.value.toUpperCase();
 });
 
+//---------------FONDO TRANSPARENTE ------------------//
 fondoTransparente.addEventListener("input", () => {
 	if (fondoTransparente.checked) {
 		colorTexto.disabled = true;
@@ -280,18 +302,39 @@ fondoTransparente.addEventListener("input", () => {
 		topText.style.backgroundColor = color;
 		bottomText.style.backgroundColor = color;
 
-	}
+	};
+});
+
+
+//-----------------CONTORNO--------------------//
+
+
+const sinCont = document.getElementById("sinCont");
+const contCLaro =document.getElementById("contClaro");
+const contOscuro = document.getElementById("contOscuro");
+
+const contornoTexto = (contorno) => {
+	topText.style.textShadow= contorno;
+	bottomText.style.textShadow = contorno;
+};
+
+sinCont.addEventListener('click', () => {
+	contornoTexto("none")
+});
+
+contCLaro.addEventListener('click', () => {
+	contornoTexto('rgb(255 255 255) 2px 2px, rgb(255 255 255) -2px 2px, rgb(255 255 255) 2px -2px, rgb(255 255 255) -2px -2px')
+});
+
+contOscuro.addEventListener('click', () => {
+	contornoTexto('rgb(0 0 0) 2px 2px, rgb(0 0 0) -2px 2px, rgb(0 0 0) 2px -2px, rgb(0 0 0) -2px -2px')
 });
 
 
 
 
 
-
-
-
-
-//----------------ESPACIADO--------------------
+//----------------ESPACIADO--------------------//
 
 const espaciado = document.getElementById("espaciado");
 espaciado.addEventListener("input", () => {
@@ -306,5 +349,12 @@ interlineado.addEventListener("input", () => {
 	bottomText.style.lineHeight = interlineado.value;
 });
 
+const ajustarImagen = () => {
+	imgTextContainer.style.height = `${
+	  imgTextContainer.getBoundingClientRect().width
+	}px`
+  }
+
+  window.addEventListener('resize', ajustarImagen);
 
 
