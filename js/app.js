@@ -169,7 +169,7 @@ btnDownload.addEventListener('click', () => {
 	imgTextContainer.style.width = anchoImg * 2 + 'px';
 	imgTextContainer.style.height = altoImg * 2 + 'px';
 
-	domtoimage.toBlob(document.getElementById('divImg'))
+	domtoimage.toBlob(document.getElementById('imgTextContainer'))
 		.then(function (blob) {
 			window.saveAs(blob, 'my-node.png');
 			imgTextContainer.style.width = anchoImg + 'px';
